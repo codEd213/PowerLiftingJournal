@@ -1,0 +1,36 @@
+.App {
+  text-align: center;
+}
+
+.workout-link,
+.quote {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin-bottom: 50px;
+  margin-top: 20px;
+}
+
+.form-container {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 60px;
+}
+
+.content {
+  margin-top: 30px;
+  padding: 30px;
+}
+
+.description-box {
+  width: 1000px;
+  height: 500px;
+  margin: auto;
+  padding: 10px;
+}
+
+.form {
+  height: 550px;
+  width: 1250px;
+  margin: 0 auto;
+}
