@@ -32,6 +32,10 @@ const JournalSchema = new mongoose.Schema(
       type: String,
       required: [true, "Must provide date!"],
     },
+    createdBy: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "User",
+    },
   },
   { timestamps: true }
 );

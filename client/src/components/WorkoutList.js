@@ -45,8 +45,15 @@ const WorkoutList = () => {
       {/* Contains title and link */}
       <div className="nav-list">
         <span className="workout-link">
-          <h1>My Journal</h1>
-          <Link to="/workout/new">Add Workout</Link>
+          <h1>Take It One Step At A Time</h1>
+          {/* <Link to="/workout/new">Add Workout</Link> */}
+          <a
+            href={"/workout/new"}
+            className="edit btn btn-sm"
+            style={{ backgroundColor: "#6f2232", color: "white" }}
+          >
+            Add Workout
+          </a>
         </span>
       </div>
 
@@ -59,6 +66,7 @@ const WorkoutList = () => {
               <th scope="col">Manage</th>
               <th scope="col">Total Weight/Minutes</th>
               <th scope="col">Date</th>
+              <th scope="col">Created By</th>
             </tr>
           </thead>
           <tbody>
@@ -68,7 +76,7 @@ const WorkoutList = () => {
                   <td>{workout.type}</td>
                 </a>
                 <td>{workout.comment}</td>
-                <td>
+                <td className="btns">
                   {/* <Link
                     to={`/workouts/${workout._id}/edit`}
                     className="text text-warning"
@@ -77,20 +85,22 @@ const WorkoutList = () => {
                   </Link>{" "} */}
                   <a
                     href={`/workouts/${workout._id}/edit`}
-                    className="btn btn-warning"
+                    className="edit btn btn-sm"
+                    style={{ color: "white" }}
                   >
                     Edit
                   </a>
                   |
                   <button
                     onClick={() => deleteHandler(workout._id)}
-                    className="btn btn-danger"
+                    className="delete btn btn-sm"
                   >
                     Delete
                   </button>
                 </td>
                 <td>{workout.work}</td>
                 <td>{workout.date}</td>
+                <td>Created By: {workout.createdBy.username}</td>
               </tr>
             ))}
           </tbody>

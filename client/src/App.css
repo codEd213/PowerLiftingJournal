@@ -34,3 +34,38 @@
   width: 1250px;
   margin: 0 auto;
 }
+
+.login {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.login-registration {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.journal {
+  color: whitesmoke;
+}
+
+.edit {
+  background-color: #4e4e50;
+}
+
+.delete {
+  background-color: #950740;
+}
+
+.lr-links {
+  display: flex;
+  flex-direction: row;
+  justify-content: right;
+}
+
+.btns {
+  display: flex;
+  flex-direction: row;
+}

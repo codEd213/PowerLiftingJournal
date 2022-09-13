@@ -1,8 +1,12 @@
 const Journal = require("../models/journal.model");
+const jwt = require("jsonwebtoken");
+require("dotenv").config();
+const SECRET = process.env.JWT_SECRET;
 
 module.exports = {
   getWorkouts: (req, res) => {
     Journal.find({})
+      .populate("createdBy", "username email")
       .then((allWorkouts) => {
         console.log(allWorkouts);
         res.json(allWorkouts);
@@ -15,7 +19,9 @@ module.exports = {
       );
   },
   createWorkout: (req, res) => {
-    Journal.create(req.body)
+    const user = jwt.verify(req.cookies.userToken, SECRET);
+
+    Journal.create({ ...req.body, createdBy: user._id })
       .then((addedWorkout) => {
         console.log(addedWorkout);
         res.json(addedWorkout);

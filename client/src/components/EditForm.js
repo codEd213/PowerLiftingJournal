@@ -49,11 +49,16 @@ const EditForm = () => {
       });
   };
 
+  const style = {
+    display: "flex",
+    flexDirection: "row",
+    justifyContent: "left",
+  };
+
   return (
     <div>
       <div className="nav-list">
-        <span className="workout-link">
-          <h1>My Journal</h1>
+        <span className="workout-link" style={style}>
           <Link to="/">Home</Link>
         </span>
         <span className="quote">

@@ -16,14 +16,18 @@ const WorkoutForm = () => {
   const submitHandler = (e) => {
     e.preventDefault();
     axios
-      .post("http://localhost:8000/api/workouts", {
-        type,
-        sets,
-        comment,
-        description,
-        work,
-        date,
-      })
+      .post(
+        "http://localhost:8000/api/workouts",
+        {
+          type,
+          sets,
+          comment,
+          description,
+          work,
+          date,
+        },
+        { withCredentials: true }
+      )
       .then((res) => {
         console.log(res);
         navigate("/");
