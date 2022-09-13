@@ -9,6 +9,7 @@ function Login({ setIsLoggedIn }) {
     password: "",
     email: "",
   });
+  const [errors, setErrors] = useState({});
 
   const handleChange = (e) => {
     setUser({ ...user, [e.target.name]: e.target.value });
@@ -25,7 +26,10 @@ function Login({ setIsLoggedIn }) {
         setIsLoggedIn(true);
         navigate("/");
       })
-      .catch((err) => console.log("error in login", err));
+      .catch((err) => {
+        console.log("error in login", err);
+        setErrors(err.response.data);
+      });
   };
 
   return (
@@ -53,6 +57,7 @@ function Login({ setIsLoggedIn }) {
               onChange={handleChange}
             />
           </div>
+          {errors ? <div className="text-danger">{errors.message}</div> : null}
           <br></br>
           <button
             className="btn"

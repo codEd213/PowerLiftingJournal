@@ -38,15 +38,32 @@ const WorkoutForm = () => {
       });
   };
 
+  const style = {
+    display: "flex",
+    flexDirection: "row",
+    justifyContent: "left",
+  };
+
   return (
     <div>
       <div className="nav-list">
-        <span className="workout-link">
-          <h1>My Journal</h1>
-          <Link to="/">Home</Link>
+        <span className="workout-link" style={style}>
+          <a
+            href={"/"}
+            className="edit btn btn-sm"
+            style={{
+              backgroundColor: "#6f2232",
+              color: "white",
+              marginLeft: "40px",
+            }}
+          >
+            Home
+          </a>
         </span>
-        <span className="quote">
-          <h2>One step at a time</h2>
+        <span>
+          <h2 style={{ marginLeft: "650px", marginTop: "15px" }}>
+            Add A New Workout
+          </h2>
         </span>
       </div>
 

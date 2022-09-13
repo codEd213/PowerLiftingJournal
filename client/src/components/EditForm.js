@@ -59,10 +59,22 @@ const EditForm = () => {
     <div>
       <div className="nav-list">
         <span className="workout-link" style={style}>
-          <Link to="/">Home</Link>
+          <a
+            href={"/"}
+            className="edit btn btn-sm"
+            style={{
+              backgroundColor: "#6f2232",
+              color: "white",
+              marginLeft: "40px",
+            }}
+          >
+            Home
+          </a>
         </span>
         <span className="quote">
-          <h2>Edit Workout</h2>
+          <h2 style={{ marginLeft: "650px", marginTop: "15px" }}>
+            Edit Workout
+          </h2>
         </span>
       </div>
 

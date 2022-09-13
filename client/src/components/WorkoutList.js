@@ -6,6 +6,8 @@ const WorkoutList = () => {
   const [list, setList] = useState([]);
   const { id } = useParams();
   const [workout, setWorkout] = useState({});
+  const [quote, setQuote] = useState("");
+  const [author, setAuthor] = useState("");
 
   const navigate = useNavigate();
 
@@ -40,17 +42,37 @@ const WorkoutList = () => {
       .catch();
   };
 
+  useEffect(() => {
+    axios
+      .get("https://api.goprogram.ai/inspiration")
+      .then((res) => {
+        setQuote(res.data.quote);
+        setAuthor(res.data.author);
+        console.log("THIS IS RESPONSE FROM API", res);
+        console.log("This is quote", res.data.quote);
+      })
+      .catch((err) => console.log(err));
+  }, []);
+
   return (
-    <div className="col col-6 mx-auto">
+    <div className="list col col-6 mx-auto">
       {/* Contains title and link */}
       <div className="nav-list">
         <span className="workout-link">
-          <h1>Take It One Step At A Time</h1>
+          <h2 style={{ fontFamily: "Merienda" }}>
+            "{quote}" - {author}
+          </h2>
           {/* <Link to="/workout/new">Add Workout</Link> */}
           <a
             href={"/workout/new"}
             className="edit btn btn-sm"
-            style={{ backgroundColor: "#6f2232", color: "white" }}
+            style={{
+              backgroundColor: "#1A1A1D",
+              color: "white",
+              marginLeft: "10px",
+              borderRadius: "10px",
+              border: "2px solid red",
+            }}
           >
             Add Workout
           </a>
@@ -86,7 +108,7 @@ const WorkoutList = () => {
                   <a
                     href={`/workouts/${workout._id}/edit`}
                     className="edit btn btn-sm"
-                    style={{ color: "white" }}
+                    style={{ color: "white", borderRadius: "10px" }}
                   >
                     Edit
                   </a>
@@ -94,6 +116,7 @@ const WorkoutList = () => {
                   <button
                     onClick={() => deleteHandler(workout._id)}
                     className="delete btn btn-sm"
+                    style={{ borderRadius: "10px" }}
                   >
                     Delete
                   </button>

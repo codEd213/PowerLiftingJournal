@@ -55,7 +55,7 @@ function Header({ isLoggedIn }) {
         {user ? (
           <div>
             <h2 className="text text-light" style={{ marginRight: "50px" }}>
-              Welcome Back, {user.userName}!
+              Welcome, {user.userName}!
             </h2>
             <button
               onClick={handleLogout}
@@ -64,6 +64,8 @@ function Header({ isLoggedIn }) {
                 marginLeft: "125px",
                 backgroundColor: "#6f2232",
                 color: "white",
+                borderRadius: "10px",
+                marginBottom: "10px",
               }}
             >
               Logout

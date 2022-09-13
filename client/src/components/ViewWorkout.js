@@ -5,6 +5,8 @@ import axios from "axios";
 const ViewWorkout = () => {
   const { id } = useParams();
   const [workout, setWorkout] = useState({});
+  const [quote, setQuote] = useState("");
+  const [author, setAuthor] = useState("");
 
   useEffect(() => {
     axios
@@ -15,18 +17,18 @@ const ViewWorkout = () => {
       .catch((err) => console.log(err));
   }, []);
 
-  // const GetQuote = () => {
-  //   const [quote, setQuote] = useState("");
+  useEffect(() => {
+    axios
+      .get("https://api.goprogram.ai/inspiration")
+      .then((res) => {
+        setQuote(res.data.quote);
+        setAuthor(res.data.author);
+        console.log("THIS IS RESPONSE FROM API", res);
+        console.log("This is quote", res.data.quote);
+      })
+      .catch((err) => console.log(err));
+  }, []);
 
-  //   useEffect(() => {
-  //     axios
-  //       .get("https://api.goprogram.ai/inspiration")
-  //       .then((res) => {
-  //         setQuote(res.data);
-  //       })
-  //       .catch((err) => console.log(err));
-  //   }, []);
-  // };
   const style = {
     display: "flex",
     flexDirection: "row",
@@ -38,7 +40,13 @@ const ViewWorkout = () => {
       {/* Contains title and link */}
       <div className="nav-list">
         <span className="workout-link" style={style}>
-          <Link to="/">Home</Link>
+          <a
+            href={"/"}
+            className="edit btn btn-sm"
+            style={{ backgroundColor: "#6f2232", color: "white" }}
+          >
+            Home
+          </a>
         </span>
       </div>
 
@@ -51,6 +59,9 @@ const ViewWorkout = () => {
           <h2>Total Work: (Sets x Weight) OR Time(mins) = {workout.work}</h2>
         </div>
       </div> */}
+      <h2>
+        "{quote}" - {author}
+      </h2>
       <div className="list-group">
         <button
           type="button"

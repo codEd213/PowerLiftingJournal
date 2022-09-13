@@ -69,3 +69,8 @@
   display: flex;
   flex-direction: row;
 }
+
+.nav-list {
+  display: flex;
+  flex-direction: row;
+}
