@@ -12,6 +12,8 @@ function Register({ setIsLoggedIn }) {
     email: "",
   });
 
+  const [errors, setErrors] = useState({});
+
   const handleChange = (e) => {
     setUser({ ...user, [e.target.name]: e.target.value });
   };
@@ -27,11 +29,18 @@ function Register({ setIsLoggedIn }) {
         setIsLoggedIn(true);
         navigate("/");
       })
-      .catch((err) => console.log("error in registration", err));
+      .catch((err) => {
+        console.log("error in registration", err);
+        setErrors(err.response.data);
+      });
   };
 
   return (
-    <form onSubmit={handleSubmit} className="login-registration">
+    <form
+      onSubmit={handleSubmit}
+      className="login-registration"
+      style={{ marginTop: "20px" }}
+    >
       <div className="form-group">
         <label htmlFor="">Username: </label>
         <input
@@ -75,6 +84,7 @@ function Register({ setIsLoggedIn }) {
           onChange={handleChange}
         />
       </div>
+      {errors ? <div className="text-danger">{errors.message}</div> : null}
       <br></br>
       <button style={{ backgroundColor: "#1A1A1D", color: "#C3073F" }}>
         Register
